@@ -1,0 +1,651 @@
+/* ============================================
+   TOKENS
+   ============================================ */
+:root {
+  --pink-bg: #FFF3F7;
+  --pink-soft: #FDE0EA;
+  --pink-mid: #F6A9C6;
+  --pink-strong: #E85D8A;
+  --pink-deep: #C93F70;
+  --plum-text: #4A2438;
+  --white: #FFFFFF;
+  --gold: #F4C978;
+
+  --font-display: 'Fredoka', sans-serif;
+  --font-body: 'Quicksand', sans-serif;
+
+  --radius-lg: 28px;
+  --radius-md: 18px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--pink-bg);
+  color: var(--plum-text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+img, svg { max-width: 100%; }
+
+a { color: inherit; }
+
+/* ============================================
+   FLOATING HEARTS BACKGROUND
+   ============================================ */
+.floaters {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floater {
+  position: absolute;
+  bottom: -10%;
+  font-size: 1.4rem;
+  opacity: 0.35;
+  animation: float-up linear infinite;
+  color: var(--pink-mid);
+}
+
+@keyframes float-up {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.4; }
+  90% { opacity: 0.4; }
+  100% { transform: translateY(-110vh) rotate(20deg); opacity: 0; }
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: radial-gradient(circle at 50% 20%, var(--pink-soft) 0%, var(--pink-bg) 65%);
+  padding: 2rem 1.5rem;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Among Us style crewmate, in pink, as the signature element */
+.crewmate {
+  position: relative;
+  width: 96px;
+  height: 120px;
+  background: linear-gradient(180deg, #FF9FC7 0%, var(--pink-strong) 100%);
+  border-radius: 46% 46% 40% 40% / 55% 55% 40% 40%;
+  margin-bottom: 1.75rem;
+  box-shadow: inset -8px -8px 0 rgba(0,0,0,0.08), 0 14px 24px rgba(232,93,138,0.35);
+  animation: bob 3.2s ease-in-out infinite;
+}
+
+.crewmate-visor {
+  position: absolute;
+  top: 26px;
+  left: 30px;
+  width: 46px;
+  height: 28px;
+  background: linear-gradient(180deg, #DDF4FF 0%, #A9DDF2 100%);
+  border-radius: 50% 60% 60% 50% / 65% 65% 45% 45%;
+  box-shadow: inset -4px -3px 0 rgba(0,0,0,0.08);
+}
+
+.crewmate-backpack {
+  position: absolute;
+  top: 30px;
+  right: -14px;
+  width: 20px;
+  height: 46px;
+  background: var(--pink-deep);
+  border-radius: 8px;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--pink-deep);
+  margin: 0 0 0.6rem;
+}
+
+.eyebrow.center { text-align: center; }
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3rem, 10vw, 6rem);
+  margin: 0;
+  color: var(--pink-deep);
+  line-height: 1;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2.4vw, 1.25rem);
+  margin: 0.85rem 0 3rem;
+  color: var(--plum-text);
+  font-weight: 600;
+}
+
+.scroll-cue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--pink-deep);
+  letter-spacing: 0.04em;
+}
+
+.scroll-arrow {
+  font-size: 1.1rem;
+  animation: nudge 1.6s ease-in-out infinite;
+}
+
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ============================================
+   COUNTER
+   ============================================ */
+.counter-section {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 4rem 1.5rem;
+}
+
+.counter-label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  color: var(--pink-deep);
+  margin: 0 0 1rem;
+}
+
+.counter {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.counter-block {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 1.4rem 1.9rem;
+  box-shadow: 0 16px 32px rgba(233,93,138,0.18);
+}
+
+.counter-block span {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+  color: var(--pink-deep);
+  line-height: 1;
+}
+
+.counter-block small {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  color: var(--pink-mid);
+}
+
+.counter-sub {
+  margin-top: 1.1rem;
+  font-weight: 600;
+  color: var(--plum-text);
+  opacity: 0.75;
+}
+
+/* ============================================
+   HISTORIA / TIMELINE
+   ============================================ */
+.historia {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 1.5rem 5rem;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  text-align: center;
+  margin: 0 0 3.5rem;
+  color: var(--plum-text);
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 27px;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  background: linear-gradient(180deg, var(--pink-mid), var(--pink-soft));
+  border-radius: 3px;
+}
+
+.evento {
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding-left: 0;
+}
+
+.evento-icono {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 8px 18px rgba(233,93,138,0.22);
+  border: 3px solid var(--pink-soft);
+}
+
+.evento-card {
+  flex: 1;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.7rem;
+  box-shadow: 0 10px 26px rgba(233,93,138,0.12);
+}
+
+.evento-fecha {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--pink-strong);
+  background: var(--pink-soft);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  margin-bottom: 0.6rem;
+}
+
+.evento-card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+  color: var(--plum-text);
+}
+
+.evento-card p {
+  margin: 0;
+  line-height: 1.55;
+  font-weight: 500;
+  color: var(--plum-text);
+  opacity: 0.85;
+}
+
+/* ============================================
+   GALERÍA
+   ============================================ */
+.galeria {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 1.5rem 5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.galeria-nota {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--pink-mid);
+  margin: 0 0 2.5rem;
+}
+
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+}
+
+.galeria-item {
+  margin: 0;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  box-shadow: 0 10px 24px rgba(233,93,138,0.14);
+}
+
+.galeria-placeholder {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  border-radius: 14px;
+  background: linear-gradient(150deg, var(--pink-soft), var(--pink-mid));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+.galeria-item figcaption {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--plum-text);
+  opacity: 0.8;
+}
+
+/* ============================================
+   RAZONES
+   ============================================ */
+.razones {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 1.5rem 5rem;
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.razones-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  justify-content: center;
+}
+
+.razon-chip {
+  background: var(--white);
+  border: 2px solid var(--pink-soft);
+  border-radius: 999px;
+  padding: 0.8rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  max-width: 320px;
+  box-shadow: 0 8px 18px rgba(233,93,138,0.1);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.razon-chip:hover {
+  transform: translateY(-4px);
+  border-color: var(--pink-mid);
+}
+
+/* ============================================
+   FUTURO
+   ============================================ */
+.futuro {
+  position: relative;
+  z-index: 1;
+  padding: 1rem 1.5rem 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.futuro-card {
+  max-width: 640px;
+  text-align: center;
+}
+
+.futuro-texto {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+/* ============================================
+   FORMULARIO DE REGISTRO
+   ============================================ */
+.registro {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 1.5rem 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.registro-card {
+  max-width: 560px;
+  width: 100%;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2.4rem clamp(1.4rem, 5vw, 2.8rem);
+  text-align: center;
+  box-shadow: 0 18px 38px rgba(233,93,138,0.18);
+  border: 2px dashed var(--pink-mid);
+}
+
+.registro-intro {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--pink-deep);
+  opacity: 0.85;
+  margin: -1.5rem 0 2rem;
+}
+
+.registro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  text-align: left;
+}
+
+.registro-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--pink-deep);
+}
+
+.registro-form input[type="text"] {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--plum-text);
+  background: var(--pink-bg);
+  border: 2px solid var(--pink-soft);
+  border-radius: 12px;
+  padding: 0.7rem 0.9rem;
+}
+
+.registro-form fieldset {
+  border: 2px solid var(--pink-soft);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.registro-form legend {
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--pink-deep);
+  padding: 0 0.4rem;
+}
+
+.registro-form .check {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+  font-size: 0.88rem;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--plum-text);
+}
+
+.registro-form .check input {
+  accent-color: var(--pink-strong);
+  width: 16px;
+  height: 16px;
+}
+
+.registro-form button {
+  margin-top: 0.4rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--pink-mid), var(--pink-deep));
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.4rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 22px rgba(201,63,112,0.3);
+}
+
+.registro-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(201,63,112,0.38);
+}
+
+.registro-resultado {
+  text-align: center;
+  font-weight: 700;
+  color: var(--pink-deep);
+  min-height: 1.2rem;
+  margin: 0;
+}
+
+/* ============================================
+   CARTA FINAL
+   ============================================ */
+.carta {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 1.5rem 6rem;
+  display: flex;
+  justify-content: center;
+}
+
+.carta-card {
+  max-width: 620px;
+  width: 100%;
+  background: linear-gradient(165deg, var(--white) 0%, var(--pink-soft) 130%);
+  border-radius: var(--radius-lg);
+  padding: 3rem clamp(1.5rem, 5vw, 3.5rem);
+  text-align: center;
+  box-shadow: 0 20px 44px rgba(233,93,138,0.2);
+}
+
+.carta-texto {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  font-weight: 500;
+  margin: 0 0 1.3rem;
+}
+
+.carta-firma {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--pink-deep);
+  margin: 1.5rem 0 0;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem 1.5rem 3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--pink-mid);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 720px) {
+  .galeria-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .galeria-grid {
+    grid-template-columns: 1fr;
+  }
+  .evento-icono {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+  .timeline::before { left: 21px; }
+  .evento-card { padding: 1.2rem 1.3rem; }
+  .counter-block { padding: 1.4rem 2.2rem; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .crewmate, .scroll-arrow, .floater {
+    animation: none !important;
+  }
+}
+
+/* Keyboard focus visibility */
+a:focus-visible {
+  outline: 2px solid var(--pink-deep);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
